@@ -1,0 +1,41 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  /* Colors */
+  --color-background: #f4f4f4;
+
+  --color-surface: #ffffff;
+
+  --color-text-primary: #333333;
+  --color-text-secondary: #666666;
+
+  --color-border: #dddddd;
+
+  /* Radius */
+  --radius-lg: 1rem;
+
+  /* Shadows */
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+  /* Spacing */
+  --space-md: 1rem;
+  --space-lg: 1.25rem;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+
+  font-family: system-ui, sans-serif;
+
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+}

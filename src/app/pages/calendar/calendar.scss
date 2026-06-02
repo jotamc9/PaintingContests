@@ -21,3 +21,15 @@
 
   padding: var(--space-md);
 }
+
+.child-component {
+  background: var(--color-surface);
+
+  border-radius: var(--radius-lg);
+
+  padding: var(--space-lg);
+
+  box-shadow: var(--shadow-card);
+
+  min-height: 18.75rem; // 300px
+}

@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { Home } from './pages/home/home';
 import { Contests } from './pages/contests/contests';
 import { Settings } from './pages/settings/settings';
+import { Calendar } from './pages/calendar/calendar';
 
 export const routes: Routes = [
   {
@@ -12,6 +13,10 @@ export const routes: Routes = [
   {
     component: Home,
     path: 'home',
+  },
+  {
+    component: Calendar,
+    path: 'calendar',
   },
   {
     component: Contests,

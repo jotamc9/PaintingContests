@@ -1,0 +1,39 @@
+.calendar-body {
+  padding: 1.5rem 1.5rem 1.5rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.2rem;
+}
+
+.calendar-grid__day-name {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  opacity: 0.6;
+  padding-bottom: 0.5rem;
+}
+
+.calendar-grid__day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  aspect-ratio: 1;
+  width: 100%;
+
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+
+  font-size: 0.95rem;
+}
+
+.calendar-grid__day:hover {
+  background: rgba(0, 0, 0, 0.08);
+}

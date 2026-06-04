@@ -1,0 +1,11 @@
+.calendar {
+  width: min(100%, 50rem);
+
+  margin: 0 auto;
+
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+
+  overflow: hidden;
+}

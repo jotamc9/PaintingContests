@@ -6,9 +6,13 @@
 
     <div class="setting-item">
       <label for="theme">Theme</label>
-      <select id="theme">
-        <option>Light</option>
-        <option>Dark</option>
+      <select
+        #themeSelect
+        [value]="themeService.theme()"
+        (change)="themeService.setTheme(themeSelect.value === 'dark' ? 'dark' : 'light')"
+      >
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
       </select>
     </div>
 

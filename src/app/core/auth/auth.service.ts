@@ -8,12 +8,33 @@ export class AuthService {
   constructor(private supabaseService: SupabaseService) {}
 
   async signInWithGoogle() {
-    if (!this.supabaseService.client) {
-      return;
+    const { data, error } =
+      await this.supabaseService.client.auth.signInWithOAuth({
+        provider: 'google',
+      });
+
+    if (error) {
+      throw error;
     }
 
-    return this.supabaseService.client.auth.signInWithOAuth({
-      provider: 'google',
-    });
+    return data;
+  }
+
+  async logout(): Promise<void> {
+    const { error } = await this.supabaseService.client.auth.signOut();
+
+    if (error) {
+      throw error;
+    }
+  }
+
+  async getCurrentUser() {
+    const { data, error } = await this.supabaseService.client.auth.getUser();
+
+    if (error) {
+      throw error;
+    }
+
+    return data.user;
   }
 }

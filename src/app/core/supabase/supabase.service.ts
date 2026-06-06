@@ -7,14 +7,19 @@ import { isPlatformBrowser } from '@angular/common';
   providedIn: 'root',
 })
 export class SupabaseService {
-  client: SupabaseClient | null = null;
+  private readonly _client: SupabaseClient | null;
 
   constructor(@Inject(PLATFORM_ID) platformId: object) {
-    if (isPlatformBrowser(platformId)) {
-      this.client = createClient(
-        environment.supabaseUrl,
-        environment.supabaseKey,
-      );
+    this._client = isPlatformBrowser(platformId)
+      ? createClient(environment.supabaseUrl, environment.supabaseKey)
+      : null;
+  }
+
+  get client(): SupabaseClient {
+    if (!this._client) {
+      throw new Error('Supabase client is not available');
     }
+
+    return this._client;
   }
 }

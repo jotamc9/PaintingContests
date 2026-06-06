@@ -11,10 +11,14 @@
 
 .calendar-grid__day-name {
   text-align: center;
+
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
-  opacity: 0.6;
+
+  color: var(--color-text-secondary);
+
+  opacity: 0.8;
   padding-bottom: 0.5rem;
 }
 
@@ -28,12 +32,20 @@
 
   border: none;
   border-radius: 50%;
+
   background: transparent;
+  color: var(--color-text-primary);
+
   cursor: pointer;
 
   font-size: 0.95rem;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
 }
 
 .calendar-grid__day:hover {
-  background: rgba(0, 0, 0, 0.08);
+  background: color-mix(in srgb, var(--color-text-primary) 10%, transparent);
 }

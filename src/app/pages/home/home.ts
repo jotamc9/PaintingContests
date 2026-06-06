@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NextContests } from './components/next-contests/next-contests';
-import { SupabaseService } from '../../core/supabase/supabase.client';
+import { AuthService } from '../../core/auth/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -9,11 +9,23 @@ import { SupabaseService } from '../../core/supabase/supabase.client';
   styleUrl: './home.scss',
 })
 export class Home {
-  constructor(private supabaseService: SupabaseService) {}
+  userName = '';
+
+  constructor(private authService: AuthService) {}
 
   async ngOnInit() {
-    const result = await this.supabaseService.testDatabase();
+    const user = await this.authService.getCurrentUser();
 
-    console.log(result);
+    this.userName = user?.user_metadata?.['full_name'] ?? '';
+  }
+
+  async login() {
+    await this.authService.signInWithGoogle();
+  }
+
+  async logout() {
+    await this.authService.logout();
+
+    this.userName = '';
   }
 }

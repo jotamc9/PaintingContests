@@ -6,4 +6,12 @@
       <app-next-contests></app-next-contests>
     </div>
   </main>
+
+  <button (click)="login()">Abrir sesión</button>
+
+  @if (userName) {
+  <p>Bienvenido {{ userName }}</p>
+  }
+
+  <button (click)="logout()">Cerrar sesión</button>
 </div>

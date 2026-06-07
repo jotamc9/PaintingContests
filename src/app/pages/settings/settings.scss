@@ -8,6 +8,8 @@
 
     font-size: 2rem;
     font-weight: 700;
+
+    color: var(--color-text-primary);
   }
 }
 
@@ -19,10 +21,11 @@
 
     font-size: 0.85rem;
     font-weight: 600;
+
     text-transform: uppercase;
     letter-spacing: 0.05em;
 
-    color: #666;
+    color: var(--color-text-secondary);
   }
 }
 
@@ -35,44 +38,74 @@
 
   padding: 20px;
 
-  background: white;
+  background: var(--color-surface);
 
+  border: 1px solid var(--color-border);
   border-radius: 16px;
-
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 
   margin-bottom: 12px;
 
-  label {
-    font-size: 1rem;
-    font-weight: 500;
-    color: #333;
-  }
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 
-  select {
-    min-width: 120px;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
 
-    padding: 8px 12px;
+.setting-item label {
+  font-size: 1rem;
+  font-weight: 500;
 
-    border: 1px solid #ddd;
-    border-radius: 8px;
+  color: var(--color-text-primary);
+}
 
-    background: white;
+.setting-item select {
+  min-width: 120px;
 
-    font-size: 0.95rem;
-    cursor: pointer;
-  }
+  padding: 8px 12px;
 
-  input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
-    cursor: pointer;
-  }
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+
+  background: var(--color-surface);
+
+  color: var(--color-text-primary);
+
+  font-size: 0.95rem;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.setting-item select:hover {
+  border-color: var(--color-primary);
+}
+
+.setting-item select:focus {
+  outline: none;
+
+  border-color: var(--color-primary);
+
+  box-shadow: 0 0 0 3px
+    color-mix(in srgb, var(--color-primary) 20%, transparent);
+}
+
+.setting-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+
+  accent-color: var(--color-primary);
+
+  cursor: pointer;
 }
 
 .settings-actions {
   display: flex;
   justify-content: flex-end;
+
   gap: 12px;
 
   margin-top: 32px;
@@ -91,34 +124,44 @@
 
   transition:
     background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
     transform 0.2s ease,
     box-shadow 0.2s ease;
+}
 
-  &:hover {
-    transform: translateY(-1px);
-  }
+.btn:hover {
+  transform: translateY(-1px);
+}
 
-  &:active {
-    transform: translateY(0);
-  }
+.btn:active {
+  transform: translateY(0);
 }
 
 .btn-primary {
-  background: #1a73e8;
+  background: var(--color-primary);
   color: white;
+}
 
-  &:hover {
-    background: #1765cc;
-  }
+.btn-primary:hover {
+  background: var(--color-primary-hover);
 }
 
 .btn-secondary {
-  background: white;
-  color: #555;
+  background: var(--color-surface);
 
-  border: 1px solid #ddd;
+  color: var(--color-text-primary);
 
-  &:hover {
-    background: #f8f8f8;
-  }
+  border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+  background: color-mix(in srgb, var(--color-primary) 8%, var(--color-surface));
+
+  border-color: var(--color-primary);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }

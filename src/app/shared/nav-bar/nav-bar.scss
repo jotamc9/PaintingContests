@@ -1,10 +1,8 @@
 .bottom-nav {
-  height: 4.5 rem;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  height: 4.5rem;
 
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
 
   display: flex;
   justify-content: space-around;
@@ -12,18 +10,24 @@
 
   position: sticky;
   bottom: 0;
+
   padding: 6px 10px;
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .nav-item {
   position: relative;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
   text-decoration: none;
-  color: #8a8a8a;
+
+  color: var(--color-text-secondary);
 
   width: 70px;
   height: 56px;
@@ -41,17 +45,21 @@
 .nav-item .label {
   font-size: 11px;
   margin-top: 4px;
-  opacity: 0.85;
+
+  color: var(--color-text-secondary);
+  opacity: 0.9;
+
   transition: opacity 0.25s ease;
 }
 
 .nav-item:hover {
-  background: rgba(0, 0, 0, 0.04);
+  background: var(--color-background);
 }
 
 .nav-item.active {
-  color: #1a73e8;
-  background: rgba(26, 115, 232, 0.12);
+  color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 12%, transparent);
+
   transform: translateY(-2px);
 }
 
@@ -60,6 +68,7 @@
 }
 
 .nav-item.active .label {
+  color: var(--color-text-primary);
   opacity: 1;
   font-weight: 500;
 }

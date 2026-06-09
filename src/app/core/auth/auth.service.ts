@@ -1,40 +1,33 @@
 import { Injectable } from '@angular/core';
 import { SupabaseService } from '../supabase/supabase.service';
+import { AuthStore } from './auth.store';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private supabaseService: SupabaseService) {}
+  constructor(
+    private supabase: SupabaseService,
+    private authStore: AuthStore,
+  ) {}
 
-  async signInWithGoogle() {
-    const { data, error } =
-      await this.supabaseService.client.auth.signInWithOAuth({
-        provider: 'google',
-      });
+  async initialize() {
+    const {
+      data: { user },
+    } = await this.supabase.client.auth.getUser();
 
-    if (error) {
-      throw error;
-    }
-
-    return data;
+    this.authStore.setUser(user);
   }
 
-  async logout(): Promise<void> {
-    const { error } = await this.supabaseService.client.auth.signOut();
-
-    if (error) {
-      throw error;
-    }
+  async login() {
+    await this.supabase.client.auth.signInWithOAuth({
+      provider: 'google',
+    });
   }
 
-  async getCurrentUser() {
-    const { data, error } = await this.supabaseService.client.auth.getUser();
+  async logout() {
+    await this.supabase.client.auth.signOut();
 
-    if (error) {
-      throw error;
-    }
-
-    return data.user;
+    this.authStore.clear();
   }
 }
